@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp"
+    android:gravity="center_vertical"
+    android:background="#ffff">
+
+    <ImageView
+        android:id="@+id/id_coin_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/btc"/>
+
+    <TextView
+        android:id="@+id/id_coin_name"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/id_coin_icon"
+        android:textSize="14sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="BTC"/>
+
+    <TextView
+        android:layout_marginLeft="40dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="150.00"
+        android:textSize="12sp"
+        android:layout_toRightOf="@+id/id_coin_name"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="10.00"
+        android:textSize="12sp"
+        android:layout_marginRight="40dp"
+        android:layout_toLeftOf="@+id/id_coin_re"
+        />
+
+    <ImageButton
+        android:id="@+id/id_coin_action"
+        android:layout_marginRight="16dp"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/xiala"/>
+
+    <TextView
+        android:id="@+id/id_coin_re"
+        android:layout_marginRight="40dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:layout_toLeftOf="@+id/id_coin_action"
+        android:text="5.00"/>
+
+
+
+</RelativeLayout>

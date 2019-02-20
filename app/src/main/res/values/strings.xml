@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">promote</string>
+
+    <string name="section_wallet">我的钱包</string>
+    <string name="section_user">个人中心</string>
+
 </resources>
