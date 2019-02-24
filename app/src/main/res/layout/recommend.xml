@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/common"/>
+    <TextView
+        android:textSize="16sp"
+        android:layout_margin="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="我的上级"/>
+
+    <RelativeLayout
+        android:padding="16dp"
+        android:layout_width="match_parent"
+        android:gravity="center_vertical"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/id_recommend_shang_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="孙**"/>
+
+        <TextView
+            android:id="@+id/id_recommend_shang_moblie"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="17785946511"
+            android:layout_alignParentRight="true"/>
+    </RelativeLayout>
+
+    <TextView
+        android:textSize="16sp"
+        android:layout_margin="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="我的下级"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/id_recommend_recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+    </android.support.v7.widget.RecyclerView>
+
+</LinearLayout>

@@ -1,6 +1,7 @@
 package com.ztdh.promote.ui.main;
 
 import android.os.Bundle;
+import android.view.Window;
 import android.widget.FrameLayout;
 
 import com.common.base.BaseActivity;
@@ -24,9 +25,6 @@ public class MainActivity extends BaseActivity implements IBaseActivity {
     public static final int WALLET = 0;
     public static final int USER = 1;
 
-    @BindView(R.id.main_container)
-    FrameLayout mainContainer;
-
     @BindView(R.id.id_main_buttombar)
     ButtomBar mBottomBar;
 
@@ -49,13 +47,14 @@ public class MainActivity extends BaseActivity implements IBaseActivity {
         super.onCreate(savedInstanceState);
         mFragments[WALLET] = new MainFragment() ;
         mFragments[USER] = new UserFragment();
-        loadMultipleRootFragment(R.id.main_container, 0,
+        loadMultipleRootFragment(R.id.id_main_c, 0,
                 mFragments[WALLET],
                 mFragments[USER]);
     }
 
     @Override
     public int getLayoutId() {
+        supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         return R.layout.activity_main;
     }
 
