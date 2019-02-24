@@ -2,13 +2,13 @@ package com.ztdh.promote.model.bean;
 
 public class Icoin {
 
-    private int id;
+    private String id;
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

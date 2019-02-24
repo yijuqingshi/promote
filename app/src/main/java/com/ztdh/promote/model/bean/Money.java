@@ -10,7 +10,7 @@ public class Money {
 
     private String coinTypeId;
 
-    private String currency;
+    private double currency;
 
     private String remark;
 
@@ -48,11 +48,11 @@ public class Money {
         this.coinTypeId = coinTypeId;
     }
 
-    public String getCurrency() {
+    public double getCurrency() {
         return currency;
     }
 
-    public void setCurrency(String currency) {
+    public void setCurrency(double currency) {
         this.currency = currency;
     }
 

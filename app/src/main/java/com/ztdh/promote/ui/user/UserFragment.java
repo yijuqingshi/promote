@@ -10,6 +10,7 @@ import com.ztdh.promote.R;
 import com.ztdh.promote.model.bean.UserAction;
 import com.ztdh.promote.ui.main.adapter.MainAdapter;
 import com.ztdh.promote.ui.user.adapter.UserAdapter;
+import com.ztdh.promote.utils.SharePreferenceUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,7 +52,7 @@ public class UserFragment extends BaseFragment {
 
         UserAction action = new UserAction();
         action.setName("用户名:");
-        action.setId_user_status("18923715896");
+        action.setId_user_status((String) SharePreferenceUtils.getData("mobile",""));
         action.setAction("签到");
         data.add(action);
 

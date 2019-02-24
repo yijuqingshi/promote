@@ -11,14 +11,25 @@ import android.widget.TextView;
 
 
 import com.common.base.IBaseActivity;
+import com.google.gson.Gson;
+import com.zhy.http.okhttp.OkHttpUtils;
+import com.zhy.http.okhttp.callback.Callback;
 import com.ztdh.promote.R;
+import com.ztdh.promote.model.api.ApiHelper;
+import com.ztdh.promote.model.bean.Icoin;
 import com.ztdh.promote.model.bean.Money;
+import com.ztdh.promote.model.bean.Reponse;
+import com.ztdh.promote.model.bean.TypeUtils;
 import com.ztdh.promote.ui.user.adapter.MoneyAdapter;
+import com.ztdh.promote.utils.SharePreferenceUtils;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import butterknife.BindView;
+import okhttp3.Call;
+import okhttp3.Response;
 
 public class MoneyActivity extends AppCompatActivity implements IBaseActivity {
 
@@ -66,26 +77,49 @@ public class MoneyActivity extends AppCompatActivity implements IBaseActivity {
 
     private List<Money> getData() {
         List<Money> data = new ArrayList<>();
-        Money money = new Money();
-        money.setType("分红");
-        money.setCoinTypeId("BTC");
-        money.setCurrency("0.01");
-        money.setCreateDate("17:12 06/23/2018");
-        data.add(money);
+        OkHttpUtils.post().url(ApiHelper.SERVER_RUL + ApiHelper.GET_MONEY).addParams("accessKey", (String) SharePreferenceUtils.getData("accessKey",""))
+                .addParams("offset","0").addParams("limit","10000").build().execute(new Callback<Reponse<Object>>() {
+            @Override
+            public Reponse<Object> parseNetworkResponse(Response response, int id) throws Exception {
+                if (response.code() == 200){
+                    String string = response.body().string();
+                    Gson gson = new Gson();
+                    return (Reponse<Object>)gson.fromJson(string,Reponse.class);
+                }
 
-        Money money1 = new Money();
-        money1.setType("分红");
-        money1.setCoinTypeId("ETH");
-        money1.setCurrency("1.0");
-        money1.setCreateDate("17:12 09/23/2018");
-        data.add(money1);
+                return null;
+            }
 
-        Money money2 = new Money();
-        money2.setType("分红");
-        money2.setCoinTypeId("KBT+");
-        money2.setCurrency("2.0");
-        money2.setCreateDate("17:12 02/23/2019");
-        data.add(money2);
+            @Override
+            public void onError(Call call, Exception e, int id) {
+
+            }
+
+            @Override
+            public void onResponse(Reponse<Object> response, int id) {
+                if (response != null && response.getStatus().equals("200")){
+                    List<Map<String,Object>> data = (List<Map<String, Object>>) response.getData();
+                    List<Money> monies = new ArrayList<>();
+                    for (Map<String, Object> datum : data) {
+                        Money money = new Money();
+                        String coinTypeId = (String) datum.get("coinTypeId");
+                        money.setCoinTypeId(coinTypeId);
+                        double  currency = (double) datum.get("currency");
+                        money.setCurrency(currency);
+                        double  type = (double) datum.get("type");
+                        int type1 = (int) type;
+                        money.setType(TypeUtils.getType(type1+""));
+                        String remark = (String) datum.get("remark");
+                        money.setRemark(remark);
+                        String createDate = (String) datum.get("createDate");
+                        money.setCreateDate(createDate);
+                        monies.add(money);
+                    }
+                    mAdapter.setData(monies);
+                    mAdapter.notifyDataSetChanged();
+            }
+        }
+        });
         return  data;
     }
 }

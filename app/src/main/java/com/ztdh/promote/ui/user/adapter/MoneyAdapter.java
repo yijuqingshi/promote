@@ -50,9 +50,10 @@ public class MoneyAdapter extends RecyclerView.Adapter<MoneyAdapter.MoneyViewHol
     @Override
     public void onBindViewHolder(@NonNull MoneyViewHolder userViewHolder, final int i) {
          userViewHolder.name.setText(data.get(i).getCoinTypeId());
-         userViewHolder.amount.setText(data.get(i).getCurrency());
+         userViewHolder.amount.setText(data.get(i).getCurrency()+"");
          userViewHolder.type.setText(data.get(i).getType());
          userViewHolder.time.setText(data.get(i).getCreateDate());
+         userViewHolder.rmark.setText(data.get(i).getRemark());
     }
 
 
@@ -76,6 +77,8 @@ public class MoneyAdapter extends RecyclerView.Adapter<MoneyAdapter.MoneyViewHol
         @BindView(R.id.id_money_name)
         TextView name;
 
+        @BindView(R.id.id_money_rmark)
+        TextView rmark;
 
         public MoneyViewHolder(@NonNull View itemView) {
             super(itemView);
