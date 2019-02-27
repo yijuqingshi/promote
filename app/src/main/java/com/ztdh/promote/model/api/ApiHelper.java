@@ -13,10 +13,13 @@ public class ApiHelper {
 
     public static final String LOGIN = "/api/app/pc/login";
 
-
     public static final String GET_ICOIN = "/api/app/pv/userWalletAmount";
 
     public static final String GET_MONEY= "/api/app/pv/userRecord";
+
+    public static final String GET_PUSHUSER= "/api/app/pv/getPushUser";
+
+    public static final String SET_PASSWORD= "/api/app/pc/setPass";
 
 
 

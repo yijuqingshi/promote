@@ -96,7 +96,6 @@ public class UserFragment extends BaseFragment {
         action5.setAction("修改");
         Intent intent3 = new Intent(getContext(),ModifyPasswordActivity.class);
         intent3.putExtra("inlogin",false);
-        action4.setIntent(intent3);
         action5.setIntent(intent3);
         data.add(action5);
 

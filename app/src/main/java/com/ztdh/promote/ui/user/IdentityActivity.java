@@ -20,6 +20,8 @@ public class IdentityActivity extends AppCompatActivity implements IBaseActivity
     @BindView(R.id.id_common_title)
     TextView title;
 
+    private boolean inlogin;
+
     @Override
     public int getLayoutId() {
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -33,7 +35,7 @@ public class IdentityActivity extends AppCompatActivity implements IBaseActivity
 
     @Override
     public void initViewAndEvent() {
-        boolean inlogin = getIntent().getBooleanExtra("inlogin", true);
+        inlogin = getIntent().getBooleanExtra("inlogin", true);
         if (inlogin){
             title.setText("修改登录密码");
         }else {

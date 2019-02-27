@@ -109,7 +109,7 @@ public class loginActivity extends AppCompatActivity implements IBaseActivity , 
 
             @Override
             public void onResponse(Reponse<Object> response, int id) {
-                    if (response != null){
+                    if (response != null && response.getStatus().equals("200")){
 
                         Map<String,Object> data = (Map<String, Object>) response.getData();
                         SharePreferenceUtils.putData("accessKey",data.get("accessKey"));
