@@ -56,10 +56,17 @@ public class MainFragment extends BaseFragment {
         id_recyclerview.addItemDecoration(new DividerItemDecoration(getContext(),DividerItemDecoration.VERTICAL));
 
         mAdapter = new MainAdapter(getContext());
-        mAdapter.setData(getData());
         id_recyclerview.setAdapter(mAdapter);
         mAdapter.notifyDataSetChanged();
 
+    }
+
+
+
+    @Override
+    public void onResume() {
+        mAdapter.setData(getData());
+        super.onResume();
     }
 
     private List<Icoin> getData() {

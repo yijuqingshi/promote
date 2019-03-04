@@ -6,6 +6,7 @@ import android.widget.FrameLayout;
 
 import com.common.base.BaseActivity;
 import com.common.base.IBaseActivity;
+import com.ztdh.promote.PromoteApp;
 import com.ztdh.promote.R;
 import com.ztdh.promote.model.Event.TabSelectedEvent;
 import com.ztdh.promote.ui.user.UserFragment;
@@ -45,6 +46,7 @@ public class MainActivity extends BaseActivity implements IBaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        PromoteApp.addActivity(this);
         mFragments[WALLET] = new MainFragment() ;
         mFragments[USER] = new UserFragment();
         loadMultipleRootFragment(R.id.id_main_c, 0,
@@ -74,6 +76,10 @@ public class MainActivity extends BaseActivity implements IBaseActivity {
         mBottomBar.setOnTabSelectedListener(new ButtomBar.OnTabSelectedListener() {
             @Override
             public void onTabSelected(int position, int prePosition) {
+                if (position == 0){
+                    MainFragment mFragment = (MainFragment) mFragments[0];
+                    mFragment.onResume();
+                }
                 showHideFragment(mFragments[position], mFragments[prePosition]);
                 TabSelectedEvent event = new TabSelectedEvent(position);
                 EventBus.getDefault().post(event);
@@ -92,4 +98,9 @@ public class MainActivity extends BaseActivity implements IBaseActivity {
     }
 
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        PromoteApp.removeActivity(this);
+    }
 }

@@ -28,6 +28,7 @@
         android:hint="请输入您的提现地址"/>
 
     <Button
+        android:background="#1296db"
         android:id="@+id/id_dingcun_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

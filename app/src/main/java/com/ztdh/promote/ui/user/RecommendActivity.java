@@ -17,6 +17,7 @@ import com.ztdh.promote.R;
 import com.ztdh.promote.model.api.ApiHelper;
 import com.ztdh.promote.model.bean.Recommond;
 import com.ztdh.promote.model.bean.Reponse;
+import com.ztdh.promote.ui.BaseActivity;
 import com.ztdh.promote.ui.user.adapter.RecommendAdapter;
 import com.ztdh.promote.utils.SharePreferenceUtils;
 
@@ -28,7 +29,7 @@ import butterknife.BindView;
 import okhttp3.Call;
 import okhttp3.Response;
 
-public class RecommendActivity extends AppCompatActivity implements IBaseActivity {
+public class RecommendActivity extends BaseActivity implements IBaseActivity {
 
     @BindView(R.id.id_common_back)
     ImageView back;

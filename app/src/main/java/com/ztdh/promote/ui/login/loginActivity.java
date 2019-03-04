@@ -1,5 +1,6 @@
 package com.ztdh.promote.ui.login;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -17,6 +18,7 @@ import com.zhy.http.okhttp.callback.Callback;
 import com.ztdh.promote.R;
 import com.ztdh.promote.model.api.ApiHelper;
 import com.ztdh.promote.model.bean.Reponse;
+import com.ztdh.promote.ui.BaseActivity;
 import com.ztdh.promote.ui.main.MainActivity;
 import com.ztdh.promote.utils.SharePreferenceUtils;
 
@@ -26,7 +28,7 @@ import butterknife.BindView;
 import okhttp3.Call;
 import okhttp3.Response;
 
-public class loginActivity extends AppCompatActivity implements IBaseActivity , View.OnClickListener {
+public class loginActivity extends BaseActivity implements IBaseActivity , View.OnClickListener {
 
     @BindView(R.id.id_login_regiter)
     Button regiter;
@@ -56,6 +58,7 @@ public class loginActivity extends AppCompatActivity implements IBaseActivity , 
 
     @Override
     public void initViewAndEvent() {
+        mDialog = new AlertDialog.Builder(this).create();
         regiter.setOnClickListener(this);
         idLoginCommit.setOnClickListener(this);
     }
@@ -88,12 +91,13 @@ public class loginActivity extends AppCompatActivity implements IBaseActivity , 
             Toast.makeText(loginActivity.this,"密码不能为空",Toast.LENGTH_SHORT).show();
             return;
         }
-
+        mDialog.setTitle("正在登陆");
+        mDialog.show();
         OkHttpUtils.post().url(ApiHelper.SERVER_RUL + ApiHelper.LOGIN).addParams("ex1","86").addParams("mobile",mobile)
                 .addParams("loginPass",password).build().execute(new Callback<Reponse<Object>>() {
             @Override
             public Reponse<Object> parseNetworkResponse(Response response, int id) throws Exception {
-
+                mDialog.cancel();
                 if (response.code() == 200){
                     String string = response.body().string();
                     Gson gson = new Gson();
@@ -118,6 +122,7 @@ public class loginActivity extends AppCompatActivity implements IBaseActivity , 
                         SharePreferenceUtils.putData("userpushurl",userpushurl);
                         SharePreferenceUtils.putData("userAuth",data.get("userAuth"));
                         SharePreferenceUtils.putData("mobile",data.get("mobile"));
+                        SharePreferenceUtils.putData("highPpassffective",data.get("highPpassffective"));
 //                        SharePreferenceUtils.putData("username",data.get("username"));
                         Intent intent = new Intent(loginActivity.this,MainActivity.class);
                         startActivity(intent);

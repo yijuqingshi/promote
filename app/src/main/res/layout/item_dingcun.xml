@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+     android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:padding="16dp">
+
+
+    <TextView
+        android:id="@+id/id_dingcun_name"
+        android:textSize="18sp"
+        android:layout_centerVertical="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="KBT+转入30天收益5%"/>
+
+    <Button
+        android:id="@+id/id_dingcun_action"
+        android:layout_alignParentRight="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#1296db"
+        android:text="定存"/>
+
+</RelativeLayout>

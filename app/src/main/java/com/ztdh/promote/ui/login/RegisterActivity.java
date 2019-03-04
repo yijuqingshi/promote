@@ -125,6 +125,9 @@ public class RegisterActivity extends AppCompatActivity implements IBaseActivity
                             hassend = true;
                             Toast.makeText(RegisterActivity.this,"注册成功",Toast.LENGTH_SHORT).show();
                             finish();
+                        }else {
+                            Toast.makeText(RegisterActivity.this,"注册失败 " + response.getMsg(),Toast.LENGTH_SHORT).show();
+
                         }
                     }
                 });

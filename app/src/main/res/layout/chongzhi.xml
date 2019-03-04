@@ -12,6 +12,7 @@
         android:text="充值地址:"/>
 
     <TextView
+        android:id="@+id/id_tv_chongzhi"
         android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -22,5 +23,6 @@
         android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="#1296db"
         android:text="复制"/>
 </LinearLayout>

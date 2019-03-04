@@ -3,7 +3,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp">
+    android:padding="16dp"
+    android:background="@mipmap/home">
 
     <LinearLayout
         android:layout_centerInParent="true"
@@ -23,6 +24,7 @@
         <EditText
             android:id="@+id/id_loginp_password"
             android:layout_marginTop="5dp"
+            android:inputType="textPassword"
             android:layout_weight="1"
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -32,6 +34,7 @@
             android:id="@+id/id_login_commit"
             android:layout_marginTop="20dp"
             android:text="登录"
+            android:background="#1296db"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 

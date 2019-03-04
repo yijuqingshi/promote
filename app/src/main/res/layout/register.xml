@@ -20,7 +20,7 @@
 
         <EditText
             android:id="@+id/id_regiter_phone"
-            android:text="18923759421"
+            android:text=""
             android:layout_marginTop="5dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -65,6 +65,7 @@
         <EditText
             android:id="@+id/id_regiter_password"
             android:hint="请输入密码"
+            android:inputType="textPassword"
             android:layout_marginTop="5dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
@@ -79,6 +80,7 @@
         <EditText
             android:id="@+id/id_regiter_commit"
             android:hint="请确认密码"
+            android:inputType="textPassword"
             android:layout_marginTop="5dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
@@ -97,6 +99,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
         <Button
+            android:background="#1296db"
             android:id="@+id/id_regiter_commit_btn"
             android:layout_marginTop="20dp"
             android:layout_width="match_parent"

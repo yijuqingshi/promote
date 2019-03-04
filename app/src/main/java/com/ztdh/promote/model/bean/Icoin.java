@@ -1,6 +1,11 @@
 package com.ztdh.promote.model.bean;
 
-public class Icoin {
+import java.io.Serializable;
+
+public class Icoin implements Serializable {
+
+
+    private static final long serialVersionUID = -7869554478931100189L;
 
     private String id;
 

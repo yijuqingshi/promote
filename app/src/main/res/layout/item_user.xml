@@ -15,7 +15,7 @@
 
     <TextView
         android:id="@+id/id_user_status"
-        android:text="18923715896"
+        android:text="13000000000"
         android:layout_marginLeft="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -27,6 +27,7 @@
         android:id="@+id/id_user_action"
         android:layout_alignParentRight="true"
         android:layout_width="wrap_content"
+        android:background="#1296db"
         android:layout_height="wrap_content"
         android:text="签到"/>
 

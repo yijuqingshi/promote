@@ -1,5 +1,6 @@
 package com.ztdh.promote.ui.user;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
@@ -15,11 +16,14 @@ import com.common.base.IBaseActivity;
 import com.google.gson.Gson;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.Callback;
+import com.ztdh.promote.PromoteApp;
 import com.ztdh.promote.R;
 import com.ztdh.promote.model.api.ApiHelper;
 import com.ztdh.promote.model.bean.Recommond;
 import com.ztdh.promote.model.bean.Reponse;
+import com.ztdh.promote.ui.BaseActivity;
 import com.ztdh.promote.ui.login.RegisterActivity;
+import com.ztdh.promote.ui.login.loginActivity;
 import com.ztdh.promote.utils.SharePreferenceUtils;
 
 import java.util.ArrayList;
@@ -31,7 +35,7 @@ import butterknife.ButterKnife;
 import okhttp3.Call;
 import okhttp3.Response;
 
-public class ModifyPasswordActivity extends AppCompatActivity implements IBaseActivity {
+public class ModifyPasswordActivity extends BaseActivity implements IBaseActivity {
 
     @BindView(R.id.id_common_back)
     ImageView back;
@@ -142,7 +146,11 @@ public class ModifyPasswordActivity extends AppCompatActivity implements IBaseAc
             public void onResponse(Reponse<Object> response, int id) {
                 if (response != null && response.getStatus().equals("200")){
                     Toast.makeText(ModifyPasswordActivity.this,"修改成功",Toast.LENGTH_SHORT).show();
-                    finish();
+                    SharePreferenceUtils.putData("accessKey","");
+                    PromoteApp.fiinishAll();
+                    Intent intent = new Intent(ModifyPasswordActivity.this,loginActivity.class);
+                    startActivity(intent);
+
                 }
             }
         });

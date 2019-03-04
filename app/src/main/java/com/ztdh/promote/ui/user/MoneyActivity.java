@@ -1,5 +1,6 @@
 package com.ztdh.promote.ui.user;
 
+import android.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
@@ -20,6 +21,7 @@ import com.ztdh.promote.model.bean.Icoin;
 import com.ztdh.promote.model.bean.Money;
 import com.ztdh.promote.model.bean.Reponse;
 import com.ztdh.promote.model.bean.TypeUtils;
+import com.ztdh.promote.ui.BaseActivity;
 import com.ztdh.promote.ui.user.adapter.MoneyAdapter;
 import com.ztdh.promote.utils.SharePreferenceUtils;
 
@@ -31,7 +33,7 @@ import butterknife.BindView;
 import okhttp3.Call;
 import okhttp3.Response;
 
-public class MoneyActivity extends AppCompatActivity implements IBaseActivity {
+public class MoneyActivity extends BaseActivity implements IBaseActivity {
 
 
     @BindView(R.id.id_recyclerview_money)
@@ -61,7 +63,7 @@ public class MoneyActivity extends AppCompatActivity implements IBaseActivity {
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         id_recyclerview.setLayoutManager(linearLayoutManager);
         id_recyclerview.addItemDecoration(new DividerItemDecoration(this,DividerItemDecoration.VERTICAL));
-
+        mDialog = new AlertDialog.Builder(this).create();
         mAdapter = new MoneyAdapter(this);
         mAdapter.setData(getData());
         id_recyclerview.setAdapter(mAdapter);
@@ -78,7 +80,7 @@ public class MoneyActivity extends AppCompatActivity implements IBaseActivity {
     private List<Money> getData() {
         List<Money> data = new ArrayList<>();
         OkHttpUtils.post().url(ApiHelper.SERVER_RUL + ApiHelper.GET_MONEY).addParams("accessKey", (String) SharePreferenceUtils.getData("accessKey",""))
-                .addParams("offset","0").addParams("limit","10000").build().execute(new Callback<Reponse<Object>>() {
+                .addParams("offset","0").addParams("limit","10000").addParams("sort","create_date").addParams("order","DESC").build().execute(new Callback<Reponse<Object>>() {
             @Override
             public Reponse<Object> parseNetworkResponse(Response response, int id) throws Exception {
                 if (response.code() == 200){
